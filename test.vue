@@ -2,5 +2,6 @@
 
 //测试merge用法
 
-//测试merge
+//测试merge2
+
 </template>
