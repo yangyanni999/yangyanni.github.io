@@ -1,0 +1,11 @@
+(function(modules){
+  function _webpack_require_(moduleId){
+    const module={
+      i:moduleId,
+      exports:{}
+    }
+    modules[moduleId].call(module.export,module,module.exports,_webpack_require_)
+    return module.exports
+  }
+  return _webpack_require(_webpack_require_.s='../index.js')
+})(modules)
