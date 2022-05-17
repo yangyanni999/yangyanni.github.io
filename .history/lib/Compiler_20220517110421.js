@@ -37,6 +37,7 @@ class Compiler {
         if (nodeLiterator.node.callee.name == 'require') {
           nodeLiterator.node.callee.name = '_webpack_require_'
           //提取路径
+          nodeLiterator.node.arguments[0].value = './' + path.join('src', nodeLiterator.node.arguments[0].value)
           nodeLiterator.node.arguments[0].value=nodeLiterator.node.arguments[0].value.replace(/\\+/g,'/')
           //存入依赖数组
           dependencies.push(nodeLiterator.node.arguments[0].value)
@@ -48,7 +49,7 @@ class Compiler {
     let resultSourceCode = generator(ast).code
 
     //6、获取相对路径
-    let modulePathRelative =  path.relative(this.root, modulePath)
+    let modulePathRelative = this.replaceSlash('./' + path.relative(this.root, modulePath))
 
     //7、 存入到modules中
     this.modules[modulePathRelative] = resultSourceCode
@@ -75,7 +76,7 @@ class Compiler {
 
 
   start() {
-    this.depAnalysis(path.resolve(this.root,this.entry),this.entry)
+    this.depAnalysis(path.resolve(this.root,this.entry))
 
     this.emitFile()
   }

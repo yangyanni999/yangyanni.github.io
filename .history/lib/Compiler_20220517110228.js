@@ -37,6 +37,7 @@ class Compiler {
         if (nodeLiterator.node.callee.name == 'require') {
           nodeLiterator.node.callee.name = '_webpack_require_'
           //提取路径
+          nodeLiterator.node.arguments[0].value = './' + path.join('src', nodeLiterator.node.arguments[0].value)
           nodeLiterator.node.arguments[0].value=nodeLiterator.node.arguments[0].value.replace(/\\+/g,'/')
           //存入依赖数组
           dependencies.push(nodeLiterator.node.arguments[0].value)
@@ -48,7 +49,7 @@ class Compiler {
     let resultSourceCode = generator(ast).code
 
     //6、获取相对路径
-    let modulePathRelative =  path.relative(this.root, modulePath)
+    let modulePathRelative = this.replaceSlash('./' + path.relative(this.root, modulePath))
 
     //7、 存入到modules中
     this.modules[modulePathRelative] = resultSourceCode
@@ -68,14 +69,14 @@ class Compiler {
     let result = ejs.render(template, { entry: this.entry, modules: this.modules })
 
     //配置输出文件
-    let outputPath = path.join(this.output.path, this.output.filename)
+    let outputPath = path.join(this.output.path, this.output.fileName)
 
     fs.writeFileSync(outputPath,result)
   }
 
 
   start() {
-    this.depAnalysis(path.resolve(this.root,this.entry),this.entry)
+    this.depAnalysis(path.resolve(this.root,this.entry))
 
     this.emitFile()
   }

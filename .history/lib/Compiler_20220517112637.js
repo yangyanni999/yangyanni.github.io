@@ -37,6 +37,7 @@ class Compiler {
         if (nodeLiterator.node.callee.name == 'require') {
           nodeLiterator.node.callee.name = '_webpack_require_'
           //提取路径
+          nodeLiterator.node.arguments[0].value = './' + path.join('src', nodeLiterator.node.arguments[0].value)
           nodeLiterator.node.arguments[0].value=nodeLiterator.node.arguments[0].value.replace(/\\+/g,'/')
           //存入依赖数组
           dependencies.push(nodeLiterator.node.arguments[0].value)

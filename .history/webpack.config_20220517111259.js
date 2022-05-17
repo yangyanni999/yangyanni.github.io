@@ -1,5 +1,5 @@
 const path = require('path')
-module.exports= {
+const config = {
   entry: './index.js',
   output: {
     filename: 'bundle.js',
