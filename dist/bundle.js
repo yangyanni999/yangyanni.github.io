@@ -21,13 +21,8 @@
     './index.js':
     (
       function(module, exports,  _webpack_require_) {
-        eval(`"use strict";
-
-var _app = _interopRequireDefault(require("./app1.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-var result = (0, _app["default"])(1, 2);
+        eval(`import sum from './app1.js';
+const result = sum(1, 2);
 console.log('结果为' + result);`)
       }
     ),
@@ -35,16 +30,9 @@ console.log('结果为' + result);`)
     './app1.js':
     (
       function(module, exports,  _webpack_require_) {
-        eval(`"use strict";
+        eval(`const sum = _webpack_require_('./app.js');
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = _default;
-
-var sum = _webpack_require_('./app.js');
-
-function _default() {
+export default function () {
   return sum();
 }`)
       }
@@ -53,9 +41,7 @@ function _default() {
     './app.js':
     (
       function(module, exports,  _webpack_require_) {
-        eval(`"use strict";
-
-module.exports = function (a, b) {
+        eval(`module.exports = function (a, b) {
   return a - b;
 };`)
       }
