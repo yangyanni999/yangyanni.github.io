@@ -1,0 +1,14 @@
+{
+  "name": "babelDemo",
+  "version": "1.0.0",
+  "description": "create babel plugin demo",
+  "main": "index.js",
+  "scripts": {
+    "babel": "node ./index.js"
+  },
+  "author": "yangyanni",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.2.2"
+  }
+}
