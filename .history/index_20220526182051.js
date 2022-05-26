@@ -5,11 +5,12 @@ const traverse = require('@babel/traverse').default
 const t = require('@babel/types')
 const autoI18nPlugin=require('./plugin/autoTrackPlugin.js')
 const fs = require('fs');
-const path=require('path')
 
 //读取需要转换的js字符串
 const before = fs.readFileSync('./before.js', 'utf8');
 
+let a;
+a = 1;
 const res = transformSync(before, {
 sourceType:'unambiguous',
 plugins:[require('./plugin/plugin.js'),[autoI18nPlugin, {

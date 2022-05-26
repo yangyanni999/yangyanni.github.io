@@ -1,4 +1,6 @@
-var a = '我是a';
+import _intl from 'intl';
+
+var a = _intl.t('intl1');
 
 var b = function (a) {
   var c = 0;
@@ -6,4 +8,4 @@ var b = function (a) {
 };
 
 b(a);
-console.log("location:8,0", 'log处理');
+console.log(_intl.t('intl2'), _intl.t('intl3'));

@@ -10,5 +10,9 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.2.2"
+  },
+  "dependencies": {
+    "@babel/helper-plugin-utils": "^7.17.12",
+    "fs-extra": "^10.1.0"
   }
 }
