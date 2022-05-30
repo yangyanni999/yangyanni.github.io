@@ -35,7 +35,6 @@ class Compiler {
         }
       }
     });
-
     const dependencyGraph = this.modules.reduce(
       (graph, item) => ({
         ...graph,

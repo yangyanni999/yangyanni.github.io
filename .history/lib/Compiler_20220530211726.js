@@ -5,7 +5,6 @@ const Parser = require("./Parser");
 class Compiler {
   constructor(options) {
     const { entry, output } = options;
-    this.options=options
     this.entry = entry;
     this.output = output;
     this.modules = [];
@@ -35,7 +34,6 @@ class Compiler {
         }
       }
     });
-
     const dependencyGraph = this.modules.reduce(
       (graph, item) => ({
         ...graph,
@@ -52,7 +50,7 @@ class Compiler {
   }
   build(filename) {
     const { getAst, getDependecies, getCode } = Parser;
-    const ast = getAst(filename,this.options);
+    const ast = getAst(filename,options);
     const dependecies = getDependecies(ast, filename);
     const code = getCode(ast);
     return {

@@ -1,7 +1,7 @@
 const path = require('path')
 const demoPlugin = require('./plugins/demoPlugin')
 module.exports = {
-  entry: './src/index.js',
+  entry: '/src/index.js',
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, 'dist')
