@@ -1,4 +1,4 @@
-const { visitorKeys } = require('../type/type');
+const { visitorKeys } = require('../types/type');
 const NodePath = require('../path/NodePath');
 
 module.exports = function traverse(node, visitors, parent, parentPath, key, listKey) {

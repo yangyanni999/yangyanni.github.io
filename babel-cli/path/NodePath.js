@@ -1,4 +1,4 @@
-const types = require('../type/type');
+const types = require('../types/type');
 const Scope = require('./Scope');
 const generate = require('../babel-pack/generator');
 module.exports = class NodePath {
